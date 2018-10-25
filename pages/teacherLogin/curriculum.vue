@@ -81,8 +81,8 @@
             <el-button @click="look(scope.row)" type="text" size="small">查看开课</el-button>
             <el-button @click="commentThis(scope.row)" type="text" size="small">查看评论</el-button>
             <el-button type="text" size="small" @click="changeVal(scope.row)">修改课程信息</el-button>
-            <el-button type="text orange"  size="small"  @click="deleteThis(scope.row.curriculum[0])">删除</el-button>
-             <el-button type="text orange"  size="small"  @click="deleteddd(scope.row.curriculum[0])">删除</el-button>
+            <el-button type="text orange"  size="small"  @click="deleteThis(scope.row)">删除</el-button>
+      
           </template>
         </el-table-column>
       </el-table>
@@ -271,6 +271,7 @@
             get('/teacher/name?name='+that.searchTeach+'&currentPage='+currentPage+'&pageSize='+size).then(res=>{
               that.teachList=res.data;
               that.loading=false;
+            
             })
           } else{
             that.teachRefresh(1,3);
@@ -303,11 +304,7 @@
         },
         deleteThis:function(id){
         	deleteOne("/deleteByidGive/"+id.giveId,'您确定删除该授课？',this)
-        }
-        deleteddd:fuction(id){
-        	console.log(id)
-        }
-        
+        }      
       },
     }
 </script>
