@@ -42,7 +42,7 @@
         show-overflow-tooltip>
         <template slot-scope="scope">
           <el-tag type="success" v-if="scope.row.status==0" style='background-color: rgba(255, 0, 0, .1);'>未开课</el-tag>
-          <el-tag type="warning" v-if="scope.row.status==1" style='background-color: rgba(0, 255, 0,)'>即将开课</el-tag>
+          <el-tag type="warning" v-if="scope.row.status==1" style='background-color: #66CCFF'>即将开课</el-tag>
           <el-tag type="warning" v-if="scope.row.status==2" style='background-color: #80DC17;'>开课中</el-tag>
           <el-tag type="warning" v-if="scope.row.status==3" style='background-color: #E6E6E6;'>已结束</el-tag>
         </template>
@@ -276,9 +276,18 @@
       },
       //转化日期格式
       date:function (time) {
-        var date = new Date(time);
-        return date.getFullYear()+"-"+date.getMonth()+"-"+date.getDate()+' '+date.getHours()+':'+date.getMinutes()+':'+date.getSeconds();
-      },
+        if(time.getMonth!=null){
+          var month = time.getMonth()+1;
+          var date = new Date(time);
+          //return date.getFullYear()+"-"+date.getMonth()+"-"+date.getDate()+' '+date.getHours()+':'+date.getMinutes()+':'+date.getSeconds();
+          return date.getFullYear()+"-"+month+"-"+date.getDate()+' '+date.getHours()+':'+date.getMinutes()+':'+date.getSeconds();
+        }else {
+          var date = new Date(time);
+          date.setMonth(Number(date.getMonth())+1);
+          return date.getFullYear()+"-"+date.getMonth()+"-"+date.getDate()+' '+date.getHours()+':'+date.getMinutes()+':'+date.getSeconds();
+        }
+
+        },
       //前往公告页面
       toAnnouncement:function (val) {
         this.$store.commit('tutionIdChange',val.tutionId);

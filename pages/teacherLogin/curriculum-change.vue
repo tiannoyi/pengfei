@@ -23,12 +23,14 @@
         <el-input placeholder="请输入课程名称" v-model="ruleForm.name"></el-input>
         </el-form-item>
         <el-form-item v-if="active==0" label="学校名：" @click="selectUniversity">
+          <el-input placeholder="学校名称" v-model="ruleForm.schoolName" disabled="disabled"></el-input>
         <span>当前所选学校：{{universityName}}</span>
         <el-button type="text"  size="small"  @click="selectUniversity">点击选择学校</el-button>
         </el-form-item>
         <el-form-item v-if="active==0" label="课程类别名：" @click="selectUniversity">
+          <el-input placeholder="类别名称" v-model="ruleForm.ctName" disabled="disabled"></el-input>
         <span>当前所选课程类别：{{ctName}}</span>
-        <el-button type="text"  size="small"  @click="selectCT">点击选择学校</el-button>
+        <el-button type="text"  size="small"  @click="selectCT">点击选择课程类别</el-button>
         </el-form-item>
         <el-form-item v-if="active==0" label='是否为系统封面'>
         <el-switch v-model="ruleForm.ismainpic"></el-switch>
@@ -59,7 +61,7 @@
         class="upload-demo"
         ref="upload"
         action="http://www.tiannoyi.com/video/curriculum/curriculumPicture"
-        accept="*.image"
+        accept="image/*"
         :on-success="success"
         :data="pirture"
         name="curriculumPicture"
@@ -77,7 +79,7 @@
         class="upload-demo"
         ref="upload"
         action="http://www.tiannoyi.com/video/curriculum/curriculumVideoPicture"
-        accept="*.image"
+        accept="image/*"
         :on-success="success"
         :data="pirture"
         name="curriculumVideoPicture"
@@ -295,7 +297,7 @@
         })
       },
       //分页查询所有的课程类别
-      refreshCT:function (currentPage=1,pageSize=3) {
+      refreshCT:function (currentPage=1,pageSize=10) {
         let that=this;
         that.loadCT=true;
         get('/courseType/CourseTypePage?currentPage='+currentPage+'&pageSize='+pageSize).then(res=>{

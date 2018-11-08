@@ -116,25 +116,31 @@
 				},
 				//改变类别
 				change: function(value) {
+          this.title = '修改类别';
 					this.dialogFormVisible = true;
 					this.ruleForm = value;
-					this.title = '修改类别';
+          this.url = 'http://www.tiannoyi.com/video/courseType/update/' + this.ruleForm.ctId;
+
 				},
-				submitUpload() {	
-					if(this.title == '添加类别') {
-						this.url = 'http://www.tiannoyi.com/video/courseType';
-						this.ruleForm = {
-							"ctName": this.ruleForm.ctName
-						}
-					}
-					//上传到服务器
-					else {
-						this.url = 'http://www.tiannoyi.com/video/courseType/update/' + this.ruleForm.ctId;
-						 delete this.ruleForm.ctName;
-						 delete this.ruleForm.ctId;
-						 delete this.ruleForm.picture
-					}
-					this.$refs.upload.submit();
+				submitUpload() {
+            //
+          // 	if(this.title == '添加类别') {
+          // console.log(this.title == '添加类别')
+          //
+          //
+          //
+          // 	}
+          // 	//上传到服务器
+          // 	else {
+          //
+          //
+          // 	}
+
+
+          this.$refs.upload.submit();
+          delete this.ruleForm.picture
+          delete this.ruleForm.ctName;
+          delete this.ruleForm.ctId;
 				},
 				//添加公告
 				add: function() {
@@ -143,6 +149,7 @@
 					this.ruleForm = {
 						ctName: '',
 					}
+          this.url = 'http://www.tiannoyi.com/video/courseType';
 				},
 				//搜索
 				search: function() {
@@ -189,19 +196,19 @@
 	.el-container {
 		background-color: #dbe1ec;
 	}
-	
+
 	.block {
 		text-align: right;
 	}
-	
+
 	.demo-input-suffix {
 		width: 300px
 	}
-	
+
 	.orange {
 		color: #FF9900;
 	}
-	
+
 	.wirte {
 		color: #dbe1ec;
 	}

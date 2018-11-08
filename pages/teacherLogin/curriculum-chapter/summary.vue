@@ -14,7 +14,7 @@
         ref="upload"
         action="http://www.tiannoyi.com/video/video/update"
         :data="videoData"
-        accept="*.mp4"
+        accept="video/*"
         :on-success="successF"
         :limit=1
         :auto-upload="false">
@@ -98,7 +98,7 @@
         </template>
       </el-table-column>
     </el-table>
-    
+
   </div>
 </template>
 

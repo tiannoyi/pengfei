@@ -42,13 +42,23 @@
         </el-table-column>
         <el-table-column
           label="授课老师(可重选)"
-          width="200">
+          width="100">
           <template slot-scope="scope"> <el-button @click="showTable(scope.row)" type="text" size="small">{{ scope.row.mainTeacher }}</el-button></template>
         </el-table-column>
-        <el-table-column
+        <!--<el-table-column
           prop="video"
           label="课程地址"
           width="200">
+        </el-table-column>-->
+        <el-table-column
+          prop="schoolName"
+          label="学校名称"
+          width="200">
+        </el-table-column>
+        <el-table-column
+          prop="ctName"
+          label="类别名称"
+          width="100">
         </el-table-column>
         <el-table-column
           prop="time"

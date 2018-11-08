@@ -179,7 +179,7 @@
           width="180">
           <template slot-scope="scope">
             <el-button @click="curriculumGo(scope.row)" type="text" size="small">前往课程</el-button>
-            <el-button type="text orange"  size="small"  @click="deleteCurriculum(scope.row.curriculum[0].curriculumId)">删除</el-button>
+            <el-button type="text orange"  size="small"  @click="deleteCurriculum(scope)">删除</el-button>
           </template>
         </el-table-column>
       </el-table>
@@ -304,6 +304,7 @@
       },
       //查看授课信息
       showClass:function (val) {
+
         let that=this;
         that.teachName=val.name;
         that.loadData=true;
@@ -328,11 +329,16 @@
           cancelButtonText: '取消',
           type: 'warning'
         }).then(() => {
-          axios.delete('/deleteByidGive/'+val).then(res=>{
+          axios.delete('/deleteByidGive/'+val.row.giveId).then(res=>{
+
             this.$message({
-              message: res.message,
-              type: res.state.toLowerCase()
+              message: res.data.message,
+              type: res.data.state.toLowerCase()
             });
+            get('/give/giveAndCurriculum?teacher_id='+val.row.teacherId).then(res=>{
+              this.classData=res.data;
+
+            })
           })
         }).catch(() => {
           this.$message({
@@ -340,6 +346,12 @@
             message: '已取消删除'
           });
         });
+
+
+
+
+
+
       },
       teachADD:function () {
         let that=this;

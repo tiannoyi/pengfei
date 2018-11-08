@@ -29,7 +29,7 @@
                 :data="ruleForm"
                 :on-preview="handlePreview"
                 :on-remove="handleRemove"
-                accept="*.mp4"
+                accept="video/*"
                 :limit=1
                 :auto-upload="false">
                 <el-button slot="trigger" size="small" type="primary">选取文件</el-button>

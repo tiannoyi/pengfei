@@ -51,7 +51,7 @@
                 ref="upload"
                 action="http://www.tiannoyi.com/video/curriculum"
                 :data="ruleForm"
-                accept="*.image"
+                accept="image/*"
                 :on-success="success"
                 name="picture"
                 :limit=1
@@ -71,7 +71,7 @@
         ref="upload"
         :action="curriculumUrl"
         :data="ruleForm"
-        accept="*.image"
+        accept="image/*"
         :on-success="successVideo"
         name="video"
         :limit=1
@@ -337,7 +337,7 @@
          this.curriculumUrl="http://www.tiannoyi.com/video/curriculum/"+ res.data.curriculumId;
          this.ruleForm._method='put';
          this.dialogVideo=true;
-       
+
          post('/insertGive?teacherId='+this.$store.state.adminName.teacherId+'&curriculumId='+res.data.curriculumId)
       },
       successVideo:function () {
@@ -351,7 +351,7 @@
       }
     },
     mounted:function(){
-    
+
     },
     resetForm(formName) {
       this.$refs[formName].resetFields();

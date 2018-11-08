@@ -44,11 +44,11 @@
         prop="optionD"
       >
       </el-table-column>
-      <el-table-column
+      <!--<el-table-column
         label="题干"
         prop="stems"
       >
-      </el-table-column>
+      </el-table-column>-->
       <el-table-column
         label="答案"
         prop="answer"
@@ -137,7 +137,7 @@
           ],
           stems: [
             { required: true, message: '请输入题干', trigger: 'blur' },
-            { min: 3, max: 7, message: '长度在 3 到 7 个字符', trigger: 'blur' }
+            { min: 1, max: 200, message: '长度在 1 到 200 个字符', trigger: 'blur' }
           ],
           optionA: [
             { required: true, message: '请输入选项a', trigger: 'change' }
@@ -202,7 +202,7 @@
         this.ruleForm.answer=val.answer;
         this.ruleForm.knowledgeId=val.knowledgeId;
         this.ruleForm._method='put';
-        this.title='修改公告';
+        this.title='修改题目';
       },
       //修改公告提交
       submitForm(formName) {

@@ -29,6 +29,7 @@
                 class="upload-demo"
                 drag
                 name="logo"
+                accept="image/*"
                 action="http://www.tiannoyi.com/video/system/updateLogo"
                 :on-success="refresh"
                 multiple>
@@ -49,6 +50,7 @@
                 class="upload-demo"
                 drag
                 name="cover"
+                accept="image/*"
                 action="http://www.tiannoyi.com/video/system/updateCover"
                 :on-success="refresh"
                 multiple>

@@ -51,7 +51,7 @@
                 ref="upload"
                 action="http://www.tiannoyi.com/video/curriculum"
                 :data="ruleForm"
-                accept="*.image"
+                accept="image/*"
                 :on-success="success"
                 name="picture"
                 :limit=1
@@ -71,7 +71,7 @@
         ref="upload"
         :action="curriculumUrl"
         :data="ruleForm"
-        accept="*.image"
+        accept="image/*"
         :on-success="successVideo"
         name="video"
         :limit=1
